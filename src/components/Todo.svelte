@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { TodoType } from "../lib/types";
   import { fade, FadeParams } from "svelte/transition";
-  import { sineIn } from "svelte/easing";
+  import { quadIn } from "svelte/easing";
   import { createEventDispatcher } from "svelte";
 
   export let todo: TodoType = undefined;
@@ -43,16 +43,17 @@
 
   const option: FadeParams = {
     duration: 1000,
-    easing: sineIn,
+    easing: quadIn,
   };
 </script>
 
 <li transition:fade={option}>
-  <input type="checkbox" bind:checked={todo.done} />
+  <input type="checkbox" title="완료여부" bind:checked={todo.done} />
   <input
     type="text"
     name="todo"
     class="strike-{todo.done} edit-{!readonly}"
+    title="할 일"
     bind:value={todo.text}
     use:onInit
     on:keydown={onBlur}
@@ -101,7 +102,8 @@
   }
 
   button:hover {
-    background-color: aquamarine;
+    /* background-color: rgb(172, 167, 167); */
+    color: greenyellow;
   }
 
   .icon-edit {
@@ -110,7 +112,7 @@
     background-color: transparent;
     font-size: 2rem;
     font-weight: bold;
-    color: blue;
+    color: #ff3d00;
   }
 
   .icon-trash {
@@ -119,6 +121,6 @@
     background-color: transparent;
     font-size: 2rem;
     font-weight: bold;
-    color: red;
+    color: cadetblue;
   }
 </style>
