@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { TodoType } from "../lib/types";
-  import { fade, FadeParams } from "svelte/transition";
+  import { slide, FadeParams } from "svelte/transition";
   import { quadIn } from "svelte/easing";
   import { createEventDispatcher } from "svelte";
 
@@ -42,12 +42,12 @@
   };
 
   const option: FadeParams = {
-    duration: 1000,
+    duration: 500,
     easing: quadIn,
   };
 </script>
 
-<li transition:fade={option}>
+<li transition:slide={option}>
   <input type="checkbox" title="완료여부" bind:checked={todo.done} />
   <input
     type="text"

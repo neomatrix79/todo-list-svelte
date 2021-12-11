@@ -71,7 +71,7 @@
 
   {#each $todoStore as todo (todo.id)}
     <!-- content here -->
-    <div>{todo.text} - {todo.done}</div>
+    <div class="store-check">{todo.text} - {todo.done}</div>
   {/each}
 </div>
 
@@ -98,6 +98,7 @@
     align-items: center;
     width: 90%;
     padding: 1rem;
+    margin-top: 1rem;
     /* background-color: orange; */
   }
 
@@ -136,5 +137,10 @@
     border: 1px solid black;
     padding: 1rem;
     overflow: auto;
+  }
+
+  .store-check {
+    font-weight: 600;
+    color: #2c54b8;
   }
 </style>
