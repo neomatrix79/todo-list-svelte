@@ -5,6 +5,7 @@
   import Todo from "./Todo.svelte";
 
   let todoText = "";
+  let todos: TodoType[];
 
   $: todos = $todoStore;
 
@@ -47,8 +48,13 @@
   <div class="title">Todo List</div>
 
   <div class="input-area">
-    <input type="text" bind:value={todoText} placeholder="Todo" />
-    <button title="입력" disabled={!todoText} on:click={onAdd}>Add</button>
+    <input
+      type="text"
+      title="할 일을 입력"
+      bind:value={todoText}
+      placeholder="Todo"
+    />
+    <button title="확인" disabled={!todoText} on:click={onAdd}>Add</button>
   </div>
 
   <!-- {todo} 와 bind:todo 차이점 -->
@@ -73,8 +79,10 @@
   .frame {
     margin: 0.25rem auto;
     display: flex;
+    align-items: center;
     flex-direction: column;
-    /* background-color: rgba(0, 0, 0, 0.5); */
+    padding: 1rem;
+    /* background-color: gray; */
   }
 
   .title {
@@ -88,8 +96,9 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    width: 100%;
+    width: 90%;
     padding: 1rem;
+    /* background-color: orange; */
   }
 
   input {
@@ -97,7 +106,7 @@
     outline: none;
     border-bottom: 1px solid black;
     font-size: 1.5rem;
-    margin: auto 2rem;
+    margin: auto 1rem;
     width: 500px;
   }
 
@@ -105,10 +114,14 @@
     border: none;
     border-radius: 0.25rem;
     font-size: 1.5rem;
-    margin: auto 1rem;
+    margin: auto 0.25rem;
     padding: 0.25rem 0.5rem;
-    background-color: indigo;
+    background-color: #2c54b8;
     color: white;
+  }
+
+  button:hover {
+    background-color: lightgreen;
   }
 
   button:disabled {
@@ -119,6 +132,7 @@
   ul {
     list-style: none;
     height: 300px;
+    width: 90%;
     border: 1px solid black;
     padding: 1rem;
     overflow: auto;
