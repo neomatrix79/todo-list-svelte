@@ -4,10 +4,10 @@
   import { quadIn } from "svelte/easing";
   import { createEventDispatcher } from "svelte";
 
-  export let todo: TodoType = undefined;
+  export let todo: TodoType = null;
 
   let readonly = true;
-  let inputElem: HTMLInputElement = undefined;
+  let inputElem: HTMLInputElement = null;
   const dispatch = createEventDispatcher();
 
   const onInit = (e: HTMLInputElement) => {
@@ -41,6 +41,12 @@
     }
   };
 
+  const onToggle = () => {
+    todo.done = !todo.done;
+    console.log(`toggle: ${todo.done}`);
+    dispatch("toggle");
+  };
+
   const option: FadeParams = {
     duration: 500,
     easing: quadIn,
@@ -48,7 +54,12 @@
 </script>
 
 <li transition:slide={option}>
-  <input type="checkbox" title="완료여부" bind:checked={todo.done} />
+  <input
+    type="checkbox"
+    title="완료여부"
+    bind:checked={todo.done}
+    on:change={onToggle}
+  />
   <input
     type="text"
     name="todo"

@@ -34,8 +34,18 @@
   // };
 
   const onEdit = (newTodo: TodoType) => {
+    console.log(`edited todo: ${newTodo.done} - ${newTodo.text}`);
+
     todoStore.update((todos) =>
       todos.map((todo) => (todo.id === newTodo.id ? newTodo : todo))
+    );
+  };
+
+  const onToggle = (id: string) => {
+    todoStore.update((todos) =>
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, done: !todo.done } : todo
+      )
     );
   };
 
@@ -65,14 +75,16 @@
         bind:todo
         on:edit={() => onEdit(todo)}
         on:remove={() => onRemove(todo.id)}
+        on:toggle={() => onToggle(todo.id)}
       />
     {/each}
   </ul>
 
-  {#each $todoStore as todo (todo.id)}
-    <!-- content here -->
-    <div class="store-check">{todo.text} - {todo.done}</div>
-  {/each}
+  <div class="store-check">
+    {#each $todoStore as todo (todo.id)}
+      <div>{todo.text} - {todo.done}</div>
+    {/each}
+  </div>
 </div>
 
 <style>
