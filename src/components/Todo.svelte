@@ -26,7 +26,8 @@
 
   const onRemove = () => {
     // dispatch("remove", { id: todo.id });
-    dispatch("remove");
+    // dispatch("remove");
+    dispatch("modal");
   };
 
   const onBlur = (e: KeyboardEvent) => {

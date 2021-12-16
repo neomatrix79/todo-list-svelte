@@ -2,10 +2,13 @@
   import { todoStore } from "../lib/stores";
   import type { TodoType } from "../lib/types";
   import { addTodo } from "../lib/utils";
+  import Modal from "./Modal.svelte";
   import Todo from "./Todo.svelte";
 
   let todoText = "";
   let todos: TodoType[];
+  let show = false;
+  let removeId = "";
 
   $: todos = $todoStore;
 
@@ -49,10 +52,20 @@
     );
   };
 
-  const onRemove = (id: string) => {
-    todoStore.update((todos) => todos.filter((todo) => todo.id !== id));
+  const onModal = (id: string) => {
+    // if (show) {
+    //   todoStore.update((todos) => todos.filter((todo) => todo.id !== id));
+    // }
+    show = true;
+    removeId = id;
+  };
+
+  const onRemove = () => {
+    todoStore.update((todos) => todos.filter((todo) => todo.id !== removeId));
   };
 </script>
+
+<Modal bind:show content="Process removing ?" on:remove={onRemove} />
 
 <div class="frame">
   <div class="title">Todo List</div>
@@ -74,8 +87,8 @@
       <Todo
         bind:todo
         on:edit={() => onEdit(todo)}
-        on:remove={() => onRemove(todo.id)}
         on:toggle={() => onToggle(todo.id)}
+        on:modal={() => onModal(todo.id)}
       />
     {/each}
   </ul>
