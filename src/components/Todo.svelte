@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { TodoType } from "../lib/types";
-  import { slide, FadeParams } from "svelte/transition";
+  import { slide, SlideParams } from "svelte/transition";
   import { quadIn } from "svelte/easing";
   import { createEventDispatcher } from "svelte";
 
@@ -47,7 +47,7 @@
     dispatch("toggle");
   };
 
-  const option: FadeParams = {
+  const option: SlideParams = {
     duration: 500,
     easing: quadIn,
   };
