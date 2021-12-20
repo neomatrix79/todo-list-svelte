@@ -1,4 +1,5 @@
 <script>
+  // import Modal from "./components/Modal.svelte";
   import TodoList from "./components/TodoList.svelte";
 </script>
 

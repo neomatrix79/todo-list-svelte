@@ -1,7 +1,8 @@
 <script lang="ts">
+  // import { afterUpdate } from "svelte";
   import { todoStore } from "../lib/stores";
   import type { TodoType } from "../lib/types";
-  import { addTodo } from "../lib/utils";
+  import { addTodo, onAdd2, onEdit2, onRemove2, onToggle2 } from "../lib/utils";
   import Modal from "./Modal.svelte";
   import Todo from "./Todo.svelte";
 
@@ -9,15 +10,38 @@
   let todos: TodoType[];
   let show = false;
   let removeId = "";
+  let list: HTMLUListElement = null;
+  let inputElem: HTMLInputElement = null;
 
   $: todos = $todoStore;
 
+  // afterUpdate(() => {
+  //   list.scrollTo(0, list.scrollHeight);
+
+  //   list.scrollTop = list.scrollHeight;
+  //   list = list;
+  //   inputElem.focus();
+
+  // });
+
+  const onInit = (elem: HTMLInputElement) => {
+    inputElem = elem;
+  };
+
   const onAdd = () => {
-    todoStore.update((todos) => todos.concat(addTodo(todoText)));
+    // todoStore.update((todos) => todos.concat(addTodo(todoText)));
+    $todoStore.push(addTodo(todoText));
+    $todoStore = $todoStore;
+
     // todos.push(addTodo(todoText));
     // todos = todos;
     // todos = todos.concat(addTodo(todoText));
     todoText = "";
+
+    // list.scrollTo(0, list.scrollHeight);
+    list.scrollTop = list.scrollHeight;
+
+    inputElem.focus();
   };
 
   // const onEdit = (e: CustomEvent<{ todo: TodoType }>) => {
@@ -39,8 +63,11 @@
   const onEdit = (newTodo: TodoType) => {
     console.log(`edited todo: ${newTodo.done} - ${newTodo.text}`);
 
-    todoStore.update((todos) =>
-      todos.map((todo) => (todo.id === newTodo.id ? newTodo : todo))
+    // todoStore.update((todos) =>
+    //   todos.map((todo) => (todo.id === newTodo.id ? newTodo : todo))
+    // );
+    $todoStore = $todoStore.map((todo) =>
+      todo.id === newTodo.id ? newTodo : todo
     );
   };
 
@@ -65,7 +92,11 @@
   };
 </script>
 
-<Modal bind:show content="Process removing ?" on:remove={onRemove} />
+<Modal
+  bind:show
+  content="Process removing ?"
+  on:remove={() => onRemove2(removeId)}
+/>
 
 <div class="frame">
   <div class="title">Todo List</div>
@@ -75,19 +106,34 @@
       type="text"
       title="할 일을 입력"
       bind:value={todoText}
+      use:onInit
       placeholder="Todo"
     />
-    <button title="확인" disabled={!todoText} on:click={onAdd}>Add</button>
+    <button
+      title="확인"
+      disabled={!todoText}
+      on:click={() => {
+        onAdd2(todoText);
+        todoText = "";
+      }}>Add</button
+    >
   </div>
 
+  {#if list}
+    <!-- content here -->
+    <div>scroll-height : {list.scrollHeight}</div>
+    <div>scroll-top: {list.scrollTop}</div>
+    <div>client-height: {list.clientHeight}</div>
+  {/if}
+
   <!-- {todo} 와 bind:todo 차이점 -->
-  <ul>
+  <ul bind:this={list}>
     {#each todos as todo (todo.id)}
       <!-- content here -->
       <Todo
         bind:todo
-        on:edit={() => onEdit(todo)}
-        on:toggle={() => onToggle(todo.id)}
+        on:edit={() => onEdit2(todo)}
+        on:toggle={() => onToggle2(todo.id)}
         on:modal={() => onModal(todo.id)}
       />
     {/each}
@@ -161,7 +207,8 @@
     width: 90%;
     border: 1px solid black;
     padding: 1rem;
-    overflow: auto;
+    /* overflow: auto; */
+    overflow-y: scroll;
   }
 
   .store-check {
