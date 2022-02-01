@@ -119,12 +119,11 @@
     >
   </div>
 
-  {#if list}
-    <!-- content here -->
+  <!-- {#if list}    
     <div>scroll-height : {list.scrollHeight}</div>
     <div>scroll-top: {list.scrollTop}</div>
     <div>client-height: {list.clientHeight}</div>
-  {/if}
+  {/if} -->
 
   <!-- {todo} 와 bind:todo 차이점 -->
   <ul bind:this={list}>
