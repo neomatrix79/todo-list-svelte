@@ -4,7 +4,9 @@
 </script>
 
 <main>
-  <TodoList />
+  <div class="media">
+    <TodoList />
+  </div>
 </main>
 
 <style>
@@ -16,5 +18,25 @@
     height: 100%;
     display: flex;
     justify-content: center;
+  }
+
+  .media {
+    width: 100%;
+  }
+
+  @media all and (min-width: 320px) {
+    .media {
+      width: 100%;
+    }
+  }
+  @media all and (min-width: 768px) {
+    .media {
+      width: 50%;
+    }
+  }
+  @media all and (min-width: 1024px) {
+    .media {
+      width: 20%;
+    }
   }
 </style>
