@@ -267,7 +267,7 @@
       width: 80%;
       padding: 0.5rem;
       /* margin-top: 0.5rem; */
-      margin: 1rem auto;
+      margin: 2rem auto 0.2rem auto;
       /* background-color: orange; */
     }
 

@@ -175,5 +175,11 @@
       font-weight: bold;
       color: cadetblue;
     }
+
+    .strike-true {
+      text-decoration: line-through;
+      text-decoration-color: red;
+      text-decoration-thickness: 0.125rem;
+    }
   }
 </style>
