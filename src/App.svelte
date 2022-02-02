@@ -16,7 +16,7 @@
     height: 100%;
     display: flex;
     justify-content: center;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
   }
 
   /* .media {

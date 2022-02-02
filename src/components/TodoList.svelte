@@ -169,7 +169,7 @@
     width: 90%;
     padding: 1rem;
     margin-top: 1rem;
-    background-color: orange;
+    /* background-color: orange; */
   }
 
   input {
