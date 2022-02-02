@@ -243,14 +243,42 @@
   @media all and (max-width: 767px) {
     .title {
       font-size: 1.5rem;
+      color: indigo;
     }
 
     input {
+      border: none;
+      outline: none;
+      border-bottom: 1px solid black;
       font-size: 12px;
+      margin: auto 1rem;
+      /* width: 500px; */
+      width: 70%;
     }
 
     button {
-      font-size: 12px;
+      font-size: 16px;
+    }
+
+    .input-area {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 80%;
+      padding: 0.5rem;
+      /* margin-top: 0.5rem; */
+      margin: 0.5rem auto;
+      background-color: orange;
+    }
+
+    .frame {
+      margin: 0.25rem auto;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding: 0.5rem;
+      width: 90%;
+      /* background-color: gray; */
     }
   }
 </style>
