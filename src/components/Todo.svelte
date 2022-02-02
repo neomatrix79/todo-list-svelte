@@ -152,10 +152,28 @@
     }
 
     input[type="text"] {
-      width: 80%;
+      width: 90%;
       font-size: 12px;
-      margin-left: 1.5rem;
+      margin-left: 0.5rem;
       padding-left: 1rem;
+    }
+
+    .icon-edit {
+      border: none;
+      outline: none;
+      background-color: transparent;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #ff3d00;
+    }
+
+    .icon-trash {
+      border: none;
+      outline: none;
+      background-color: transparent;
+      font-size: 1rem;
+      font-weight: bold;
+      color: cadetblue;
     }
   }
 </style>

@@ -226,7 +226,7 @@
   /* 테블릿 가로, 테블릿 세로 (해상도 768px ~ 1023px)*/
   @media all and (min-width: 768px) and (max-width: 1023px) {
     .title {
-      font-size: 2.5rem;
+      font-size: 3rem;
     }
 
     input {
@@ -242,7 +242,7 @@
   /* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px)*/
   @media all and (max-width: 767px) {
     .title {
-      font-size: 1.5rem;
+      font-size: 2.5rem;
       color: indigo;
     }
 
@@ -267,8 +267,8 @@
       width: 80%;
       padding: 0.5rem;
       /* margin-top: 0.5rem; */
-      margin: 0.5rem auto;
-      background-color: orange;
+      margin: 1rem auto;
+      /* background-color: orange; */
     }
 
     .frame {
@@ -277,7 +277,7 @@
       align-items: center;
       flex-direction: column;
       padding: 0.5rem;
-      width: 90%;
+      width: 95%;
       /* background-color: gray; */
     }
   }
