@@ -138,11 +138,11 @@
     {/each}
   </ul>
 
-  <div class="store-check">
+  <!-- <div class="store-check">
     {#each $todoStore as todo (todo.id)}
       <div>{todo.text} - {todo.done}</div>
     {/each}
-  </div>
+  </div> -->
 </div>
 
 <style>
@@ -169,7 +169,7 @@
     width: 90%;
     padding: 1rem;
     margin-top: 1rem;
-    /* background-color: orange; */
+    background-color: orange;
   }
 
   input {
@@ -178,7 +178,8 @@
     border-bottom: 1px solid black;
     font-size: 1.5rem;
     margin: auto 1rem;
-    width: 500px;
+    /* width: 500px; */
+    width: 70%;
   }
 
   button {
@@ -210,8 +211,46 @@
     overflow-y: scroll;
   }
 
-  .store-check {
+  /* .store-check {
     font-weight: 600;
     color: #2c54b8;
+  } */
+
+  /* PC (해상도 1024px)*/
+  @media all and (min-width: 1024px) {
+    .title {
+      font-size: 5rem;
+    }
+  }
+
+  /* 테블릿 가로, 테블릿 세로 (해상도 768px ~ 1023px)*/
+  @media all and (min-width: 768px) and (max-width: 1023px) {
+    .title {
+      font-size: 2.5rem;
+    }
+
+    input {
+      font-size: 12px;
+      /* width: 50%; */
+    }
+
+    button {
+      font-size: 12px;
+    }
+  }
+
+  /* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px)*/
+  @media all and (max-width: 767px) {
+    .title {
+      font-size: 1.5rem;
+    }
+
+    input {
+      font-size: 12px;
+    }
+
+    button {
+      font-size: 12px;
+    }
   }
 </style>

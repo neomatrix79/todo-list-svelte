@@ -4,9 +4,7 @@
 </script>
 
 <main>
-  <div class="media">
-    <TodoList />
-  </div>
+  <TodoList />
 </main>
 
 <style>
@@ -18,9 +16,10 @@
     height: 100%;
     display: flex;
     justify-content: center;
+    overflow-y: scroll;
   }
 
-  .media {
+  /* .media {
     width: 100%;
   }
 
@@ -38,5 +37,5 @@
     .media {
       width: 20%;
     }
-  }
+  } */
 </style>
